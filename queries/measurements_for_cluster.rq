@@ -1,0 +1,12 @@
+PREFIX cosmo: <http://example.org/cosmology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?clusterLabel ?mType ?mValue ?uncertainty
+WHERE {
+  ?cluster a cosmo:Cluster ;
+           rdfs:label ?clusterLabel ;
+           cosmo:hasMeasurement ?m .
+  ?m cosmo:measurementType ?mType ;
+     cosmo:measurementValue ?mValue .
+  OPTIONAL { ?m cosmo:hasUncertainty ?uncertainty . }
+}

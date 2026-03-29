@@ -1,0 +1,11 @@
+PREFIX cosmo: <http://example.org/cosmology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?cluster ?label ?surveyLabel
+WHERE {
+  ?cluster a cosmo:Cluster ;
+           rdfs:label ?label ;
+           cosmo:hasObservation ?obs .
+  ?obs cosmo:observedInSurvey ?survey .
+  ?survey rdfs:label ?surveyLabel .
+}

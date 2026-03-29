@@ -1,0 +1,35 @@
+@prefix cosmo: <http://example.org/cosmology/> .
+@prefix ex:    <http://example.org/resource/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+ex:cluster_abell1689 a cosmo:Cluster ;
+    rdfs:label "Abell 1689" ;
+    cosmo:hasObservation ex:obs_001 ;
+    cosmo:hasMeasurement ex:m_redshift_001, ex:m_mass_001 .
+
+ex:obs_001 a cosmo:Observation ;
+    cosmo:observedInSurvey ex:survey_hst ;
+    cosmo:usedInstrument ex:instrument_wfc3 .
+
+ex:survey_hst a cosmo:Survey ;
+    rdfs:label "Hubble Survey" .
+
+ex:instrument_wfc3 a cosmo:Instrument ;
+    rdfs:label "WFC3" .
+
+ex:m_redshift_001 a cosmo:Measurement ;
+    cosmo:measurementType "redshift" ;
+    cosmo:measurementValue "0.183"^^xsd:decimal ;
+    cosmo:hasUncertainty "0.002"^^xsd:decimal ;
+    cosmo:reportedIn ex:paper_001 .
+
+ex:m_mass_001 a cosmo:Measurement ;
+    cosmo:measurementType "mass" ;
+    cosmo:measurementValue "2.0"^^xsd:decimal ;
+    cosmo:hasUncertainty "0.1"^^xsd:decimal ;
+    cosmo:reportedIn ex:paper_001 .
+
+ex:paper_001 a cosmo:Publication ;
+    rdfs:label "Example Cluster Paper" .
