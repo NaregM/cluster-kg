@@ -1,0 +1,42 @@
+@prefix cosmo: <http://example.org/cosmology/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+cosmo:Cluster a rdfs:Class .
+cosmo:Survey a rdfs:Class .
+cosmo:Instrument a rdfs:Class .
+cosmo:Observation a rdfs:Class .
+cosmo:Measurement a rdfs:Class .
+cosmo:Publication a rdfs:Class .
+
+cosmo:hasObservation a rdf:Property ;
+    rdfs:domain cosmo:Cluster ;
+    rdfs:range cosmo:Observation .
+
+cosmo:observedInSurvey a rdf:Property ;
+    rdfs:domain cosmo:Observation ;
+    rdfs:range cosmo:Survey .
+
+cosmo:usedInstrument a rdf:Property ;
+    rdfs:domain cosmo:Observation ;
+    rdfs:range cosmo:Instrument .
+
+cosmo:hasMeasurement a rdf:Property ;
+    rdfs:domain cosmo:Cluster ;
+    rdfs:range cosmo:Measurement .
+
+cosmo:measurementType a rdf:Property ;
+    rdfs:domain cosmo:Measurement .
+
+cosmo:measurementValue a rdf:Property ;
+    rdfs:domain cosmo:Measurement ;
+    rdfs:range xsd:decimal .
+
+cosmo:hasUncertainty a rdf:Property ;
+    rdfs:domain cosmo:Measurement ;
+    rdfs:range xsd:decimal .
+
+cosmo:reportedIn a rdf:Property ;
+    rdfs:domain cosmo:Measurement ;
+    rdfs:range cosmo:Publication .
